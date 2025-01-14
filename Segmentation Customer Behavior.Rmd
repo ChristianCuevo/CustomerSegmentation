@@ -1,0 +1,32 @@
+
+
+```{r}
+library(factoextra)
+
+data <- read.csv("Customer Purchasing Behaviors.csv")
+summary(data)
+str(data)
+ 
+data_numeric <- data[, sapply(data, is.numeric)]
+data_scaled <- scale(data_numeric[, -1])
+data_scaled <- na.omit(data_scaled) 
+```
+Elbow Method:
+```{r}
+fviz_nbclust(data_scaled, kmeans, method = "wss") +
+  labs(title = "Elbow Method")
+```
+Seems 2 or 3 is ideal number of clusters, I will pick 3.
+Time to apply the clustering:
+```{r}
+set.seed(123)
+kmeans_result <- kmeans(data_scaled, centers = 3, nstart = 25)
+data$Cluster <- kmeans_result$cluster
+aggregate(data[, -1], by = list(Cluster = data$Cluster), FUN = mean)
+
+```
+Visualization:
+```{r}
+pca <- prcomp(data_scaled, scale. = TRUE)
+fviz_cluster(kmeans_result, data = data_scaled, geom = "point", ellipse.type = "norm", stand = FALSE)
+```
