@@ -2,7 +2,8 @@
 
 ```{r}
 library(factoextra)
-
+library(ggplot2)
+library(dplyr)
 data <- read.csv("Customer Purchasing Behaviors.csv")
 summary(data)
 str(data)
