@@ -38,8 +38,8 @@ This project was completed in **R**, using the following libraries:
    ```r
    install.packages(c("ggplot2", "dplyr", "tidyr", "factoextra"))
 Run the script to reproduce the analysis, segmentation results, and visualizations.
-Results
+## Results
 The K-means clustering and PCA analysis reveal distinct customer segments with varying purchasing behaviors, allowing businesses to tailor marketing strategies and enhance customer engagement.
 
-Conclusion
+## Conclusion
 This project provides valuable insights into customer segmentation, offering potential for more targeted business strategies and improving customer experience.
